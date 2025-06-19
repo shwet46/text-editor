@@ -41,7 +41,7 @@ src/
 ### Building with CMake
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/text-editor.git
+   git clone https://github.com/shwet46/text-editor.git
    cd text-editor
    ```
 2. Create a build directory and run CMake:
@@ -59,8 +59,4 @@ src/
   ```sh
   g++ -std=c++17 src/*.cpp -o texteditor -lsfml-graphics -lsfml-window -lsfml-system
   ```
-
-## Usage
-- Launch the application.
-- Use keyboard and mouse to navigate, edit, and save files.
-- Scroll, zoom, and rotate the view as needed.
+---
