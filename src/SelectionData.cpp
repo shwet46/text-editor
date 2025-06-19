@@ -2,7 +2,6 @@
 
 SelectionData::SelectionData() : lastSelectionIndex(-1) {}
 
-// Inactiva por defecto pues solo inicializo el ancla
 void SelectionData::createNewSelection(int anclaLine, int anclaChar) {
     this->selections.push_back(Selection(anclaLine, anclaChar));
     this->lastSelectionIndex++;
@@ -23,7 +22,6 @@ void SelectionData::updateLastSelection(int extremoLine, int extremoChar) {
     this->selections[this->lastSelectionIndex].extremo.charN = extremoChar;
 }
 
-// Extremos de una seleccion son inclusives a ambos lados
 bool SelectionData::isSelected(int lineN, int charN) const {
     for (const Selection sel : this->selections) {
         if (!sel.activa) {
@@ -41,28 +39,23 @@ bool SelectionData::isSelected(int lineN, int charN) const {
             end = sel.ancla;
         }
 
-        // Si esta estrictamente entre las lineas puede estar seleccionado.
         if (start.lineN <= lineN && lineN <= end.lineN) {
-            // Si la linea esta estrictamente contenida es porque esta seleccionada
+          
             if (start.lineN < lineN && lineN < end.lineN) {
                 return true;
             }
 
-            // Si hay mas de una linea de seleccion y esta en el inicio
             else if (start.lineN == lineN && lineN < end.lineN) {
                 if (start.charN <= charN) {
                     return true;
                 }
             }
-
-            // Si hay mas de una linea de seleccion y esta en el final
             else if (start.lineN < lineN && lineN == end.lineN) {
                 if (charN < end.charN) {
                     return true;
                 }
             }
 
-            // Si hay una unica linea de seleccion y está ahi
             else if (start.lineN == lineN && lineN == end.lineN) {
                 if (start.charN <= charN && charN < end.charN) {
                     return true;
@@ -115,7 +108,6 @@ int SelectionData::getEndCharN(Selection &selection) {
 
 bool SelectionData::validIndex(int index) {
     if (index < 0 || index >= (int)this->selections.size()) {
-        // std::cerr << "Index: " << index << " is not a valid index for Selections" << std::endl;
         return false;
     }
     return true;

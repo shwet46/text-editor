@@ -5,8 +5,6 @@
 #include <vector>
 #include "TextDocument.h"
 
-// TODO: Pensar si la seleccion no deberia conocer al documento, para arreglar quilombos con los multiples
-// TODO: Avanzar/retroceder un char. Avanzar/retroceder una palabra
 class SelectionData {
    private:
     struct Extremo {
@@ -40,13 +38,6 @@ class SelectionData {
 
     Selection getLastSelection();
 
-    // TODO: Para cuando use multiples selecciones con teclado
-    //       util para mover todas x caractes hacia un lado.
-    //       Hay que tener en cuenta el no salirse del documento y cambios de linea, colisiones etc
-    // TODO: Puede que cada seleccion se necesite mover de a saltos diferentes,
-    //       por ejemplo cuando muevo con ctrl shift de a palabras, esto no serviria en ese caso
-    //       tendria que hacer un "moveSelectionsToNextWord" o algo asi
-    // TODO: Handlear que pasa cuando las selecciones chocan, ver el merge
     void moveSelectionsRight(int charAmount, const TextDocument &doc);
     void moveSelectionsLeft(int charAmount, const TextDocument &doc);
 

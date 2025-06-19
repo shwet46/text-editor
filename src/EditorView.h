@@ -1,5 +1,5 @@
-#ifndef TextView_H
-#define TextView_H
+#ifndef EDITORVIEW_H
+#define EDITORVIEW_H
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -39,7 +39,7 @@ class EditorView {
     void setDeltaScroll(float delta);
     void setDeltaRotation(float delta);
 
-    // TODO: Replace std::pair with coordinates object
+
     std::pair<int,int> getDocumentCoords(float mouseX, float mouseY);
 
    private:
